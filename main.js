@@ -18,3 +18,19 @@ for (let i = 0; i < btn.length; i++) {
         document.querySelector(currentClass).classList.remove("hidden")//TAR BORT HIDDEN FRÅN JUST DEN SEKTION MAN VÄLJER GENOM ATT KLICKA PÅ KNAPPEN
     })
 }
+ 
+async function randomBeer() {
+    const request = await fetch (`https://api.punkapi.com/v2/beers/random`)
+    const response = await request.json()
+    return response
+}
+
+async function print(){
+    let randomBeerFetch = await randomBeer()
+    // console.log(randomBeerFetch[0])
+    document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
+    document.querySelector(".home-beer-card-name p").innerHTML = randomBeerFetch[0].name
+}
+print()
+
+document.querySelector(".home-random-beer-button").addEventListener("click", print)

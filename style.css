@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .home,
@@ -70,10 +71,11 @@ a:hover{
 .home-contet{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 400px 160px 80px;
+    grid-template-rows: 400px 160px 60px;
 }
 .home-beer-card{
     display: grid;
+    width: 340px;
     grid-template-rows: 1fr;
     grid-template-rows: auto auto;
     border-radius: 20px;
@@ -86,6 +88,12 @@ a:hover{
     align-items: center;
 }
 
+.home-beer-card-name p:nth-child(1){
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
 .beer-card-img{
     height: 260px;
 }
@@ -94,17 +102,18 @@ a:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 30px;
+    padding: 0 30px;
 }
 
 
 
 .home-beer-card-text{
     display: flex;
+    justify-content: center;
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .home-random-beer-button{
