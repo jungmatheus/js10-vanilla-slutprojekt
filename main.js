@@ -28,7 +28,16 @@ async function randomBeer() {
 async function print(){
     let randomBeerFetch = await randomBeer()
     // console.log(randomBeerFetch[0])
-    document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
+    if (randomBeerFetch[0].image_url != null) {
+        document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
+    }
+    if(randomBeerFetch[0].image_url === null){
+        console.log("we got a null!");
+
+        document.querySelector(".beer-card-img").src = "images/baby-yoda.jpeg"
+        document.querySelector(".beer-card-img").style = "max-width: 300px"
+    }
+        
     document.querySelector(".home-beer-card-name p").innerHTML = randomBeerFetch[0].name
 }
 print()
