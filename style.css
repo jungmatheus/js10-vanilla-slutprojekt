@@ -4,11 +4,19 @@
     box-sizing: border-box;
 }
 
+.home,
+.search,
+.info{
+    height: 90vh;
+    padding: 0 12%;
+}
+
 header{
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
     background-color: #023436;
+    background-color: rgba(0, 0, 0, 0.803);
     color: #048980;
 
 }
@@ -20,26 +28,21 @@ header{
 .btn-wrapper{
     display: flex;
     align-items: center;
+    padding-right: 40px;
 }
 
-button{
-    margin-left: 24px;
+.header-btn{
+    margin-left: 34px;
     padding:  4px 10px;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 1px solid #000c0b;
     font-size: 14px;
     background-color: #048980;
-    color: white;
+    color: black;
 }
 
-button:hover{
+.header-btn:hover{
     cursor: pointer;
-}
-
-a{
-    padding: 10px;
-    text-decoration: none;
-    color: green;
 }
 
 a:hover{
@@ -54,10 +57,62 @@ a:hover{
     font-family: 'Great Vibes', cursive;
     font-size: 46px;
 }
+
+
+
 /*----------------------------- SECTION HOME -------------------------*/
-.home,
-.search,
-.info{
-    height: 100vh;
-    padding: 0 10%;
+
+.home-content-wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
 }
+.home-contet{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 160px 80px;
+}
+.home-beer-card{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-rows: auto auto;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.home-beer-card-pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.beer-card-img{
+    height: 260px;
+}
+
+.home-beer-card-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 30px;
+}
+
+
+
+.home-beer-card-text{
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 30px;
+}
+
+.home-random-beer-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* -----------------------------test css button */
+
