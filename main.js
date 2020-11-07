@@ -3,6 +3,7 @@ function hideAllSections() {
     let link = document.querySelectorAll("section")
     for (let i = 0; i < link.length; i++) {
         link[i].classList.add("hidden")
+        // console.log(link[i]);
     }
 }
     
@@ -27,7 +28,7 @@ async function randomBeer() {
 
 async function print(){
     let randomBeerFetch = await randomBeer()
-    console.log(randomBeerFetch[0])
+    // console.log(randomBeerFetch[0])
     if (randomBeerFetch[0].image_url != null) {
         document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
         document.querySelector(".info-beer-card-img").src = randomBeerFetch[0].image_url

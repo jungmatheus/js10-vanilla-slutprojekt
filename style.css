@@ -155,7 +155,7 @@ a:hover{
 
 /* ------------------------------------------------------- SECTION SEARCH PAGE --------------------------------------------------*/
 
-.search {
+.search-content-wrapper{
     display:flex;
     flex-direction:column;
     align-items:center;
