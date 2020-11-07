@@ -6,7 +6,6 @@
 }
 
 .home,
-.search,
 .info{
     height: 90vh;
     padding: 0 12%;
@@ -122,6 +121,58 @@ a:hover{
     align-items: center;
 }
 
+
+/* ------------------------------------------------------- SECTION SEARCH PAGE --------------------------------------------------*/
+
+.search {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.search-header {
+    margin-top:5vh;
+    display:flex;
+    justify-content:center;
+}
+
+.search-header > img {
+    width:30%;
+}
+
+.search-main {
+    width:510px;
+    height:400px;
+ 
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.search-main h2 {
+    margin-top:2vh;
+    font-size:42px;
+    font-family:'Rouge Script';
+    color:#048980;
+}
+
+
+.search-main form input {
+    margin-top:10vh;
+    height:40px;
+    width:500px;
+    text-align:center;
+    font-size:20px;
+    background-color:rgba(0, 0, 0, 0.803);
+    color:#048980;
+    
+}
+
+::placeholder {
+    color:#048980;
+    opacity:1; 
+}
 
 /* -----------------------------test css button */
 
