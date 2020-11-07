@@ -62,7 +62,8 @@ a:hover{
 
 /*----------------------------- SECTION HOME -------------------------*/
 
-.home-content-wrapper{
+.home-content-wrapper,
+.info-content-wrapper{
     display: flex;
     justify-content: center;
     padding: 60px 0;
@@ -119,6 +120,36 @@ a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.see-more{
+    font-style: italic;
+    font-size: 14px;
+}
+.see-more:hover{
+    cursor: pointer;
+}
+
+
+/* ----------------------------------SECTION INFO---------------------*/
+
+.info-contet{
+    display: grid;
+    grid-template-columns: 2fr;
+    
+}
+
+.info-beer-card{
+    padding: 0 80px;
+}
+
+.info-beer-information{
+    max-width: 500px;
+}
+
+.info-beer-information li{
+    list-style: none;
+    margin-bottom: 14px;
 }
 
 
