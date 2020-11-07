@@ -210,6 +210,12 @@ a:hover{
     opacity:1; 
 }
 
+.fa-search {
+    position:relative;
+    right:3vh;
+    color:#048980;
+}
+
 /* -----------------------------test css button */
 
 
