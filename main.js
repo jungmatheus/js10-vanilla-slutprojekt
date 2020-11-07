@@ -7,7 +7,6 @@ function hideAllSections() {
     }
 }
     
-    
 
 let btn = document.querySelectorAll(".btn-wrapper button")//TAR KNAPPARNA HOME, SEARCH OCH INFO
 let currentClass;
@@ -73,3 +72,27 @@ function seeMore(){
     hideAllSections()
     document.querySelector(".info").classList.remove("hidden")
 }
+
+
+/* ----------------------------------------------- SEARCH PAGE ----------------------------------------- */
+
+
+let fetchBeerByName = async function(userInput) {
+
+    let root  = "https://api.punkapi.com/v2/beers?beer_name=";
+
+
+    let request  = await fetch(root + userInput);
+    let result = await request.json();
+    
+    return result;
+
+}
+
+let searchButton = document.querySelector(".fa-search");
+let searchInput = document.querySelector("input");
+
+searchButton.addEventListener("click", function() {
+
+    console.log(fetchBeerByName(searchInput.value));
+})
