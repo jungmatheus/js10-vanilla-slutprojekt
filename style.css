@@ -207,3 +207,59 @@ a:hover{
 
 /* -----------------------------test css button */
 
+
+
+
+/* RESPONSIVE DESIGN--------------------------------------- */
+@media screen and (max-width: 760px){
+
+    header{
+        padding: 0 8px;
+    } 
+
+    .logo{
+        font-size: 30px;
+    }
+    .header-btn {
+        margin-left: 12px;
+    }
+
+    .info-content-wrapper{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+
+        /* justify-content: center;
+        padding: 60px 0; */
+    }
+
+    .info-content{
+        margin-bottom: 30px;
+    }
+
+    .btn-wrapper {
+        padding-right: 0;
+    }
+
+    .btn-wrapper button{
+        font-size: 10px;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-wrapper button:nth-child(3){
+        display: none;
+    }
+
+    .beer-card-img{
+        max-width: 200px;
+    }
+
+    .info-beer-information{
+        display: grid;
+        margin: 0 auto;
+        max-width: 320px;
+    }
+
+}
