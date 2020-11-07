@@ -72,25 +72,3 @@ function seeMore(){
     hideAllSections()
     document.querySelector(".info").classList.remove("hidden")
 }
-
-// async function print() { //Skapar en funktion som printar en lista på characters 
-//   
-    
-//     for(var i = 0; i < result.results.length; i++){
-//         a.innerHTML += "<li>" + result.results[i].name + "</li>"
-//         if(i % 2 == 0) {
-//             document.getElementsByTagName("li")[i].classList.add("bg-color")
-//         }
-//     }
-    
-//     // Vi lägger till en eventlistener här:
-//     let charInfo = document.querySelectorAll(".character li")
-//     for (let i = 0; i < charInfo.length; i++) {
-//         charInfo[i].addEventListener("click", function(){
-//             clickOnCharacter(charInfo[i].innerText)
-//         })
-//     }
-//     document.querySelector(".characters-list-wrapper").classList.add("hidden") //döljer preloader
-//     document.querySelector(".character").classList.remove("hidden")
-// }
-// print()
