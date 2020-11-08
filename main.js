@@ -77,6 +77,9 @@ function seeMore() {
 /* ----------------------------------------------- SEARCH PAGE ----------------------------------------- */
 
 
+let searchButton = document.querySelector(".fa-search");
+let searchInput = document.querySelector("input");
+
 let fetchBeerByName = async function (userInput) {
     let root = "https://api.punkapi.com/v2/beers?beer_name=";
 
@@ -93,37 +96,38 @@ let createList = async function (userInput) {
 
     let fetchResult = await fetchBeerByName(userInput);
 
-    for(let i = 0; i < list.length; i++) {
-        list[i].innerHTML = fetchResult[i].name;
-    }
-}
-
-
-
-let showList = function () {
     let searchMain = document.querySelector(".search-main");
     let ul = document.createElement("ul");
     searchMain.appendChild(ul);
     ul.classList.add("ul-form");
 
     ///creates 3 li elements
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < fetchResult.length; i++) {
         let li = document.createElement("li");
         ul.appendChild(li);
         list = document.querySelectorAll(".ul-form li");
         list[i].classList.add("li-form");
 
+        list[i].innerHTML = fetchResult[i].name;
+
+
+        //checks if search form is empty
+        if(searchInput.value.length > 0) {
+            list[i].style.display = "";
+        }
+        else if(searchInput.value.length == 0) {
+            list[i].style.display = "none";
+            list[i].innerHTML = "";
+           console.log("fuck")
+        }
+            
     }
+    
 }
 
 
-
-let searchButton = document.querySelector(".fa-search");
-let searchInput = document.querySelector("input");
-
-searchButton.addEventListener("click", function () {
-    showList();
-    createList(searchInput.value);
+searchInput.addEventListener("keyup", function () {
 
 
+        createList(searchInput.value);
 })
