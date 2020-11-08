@@ -91,7 +91,6 @@ let fetchBeerByName = async function (userInput) {
 }
 
 
-
 let createList = async function (userInput) {
 
     let fetchResult = await fetchBeerByName(userInput);
@@ -110,24 +109,24 @@ let createList = async function (userInput) {
 
         list[i].innerHTML = fetchResult[i].name;
 
-
         //checks if search form is empty
-        if(searchInput.value.length > 0) {
-            list[i].style.display = "";
-        }
-        else if(searchInput.value.length == 0) {
+        if (userInput.length == 0) {
             list[i].style.display = "none";
             list[i].innerHTML = "";
-           console.log("fuck")
+            console.log("fuck")
         }
-            
+        else {
+            console.log("hello");
+            list[i].style.display = "";
+        }
+      
+        
     }
-    
+
 }
 
 
 searchInput.addEventListener("keyup", function () {
-
-
-        createList(searchInput.value);
+    
+    createList(searchInput.value);
 })
