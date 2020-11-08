@@ -6,26 +6,26 @@ function hideAllSections() {
         // console.log(link[i]);
     }
 }
-    
+
 
 let btn = document.querySelectorAll(".btn-wrapper button")//TAR KNAPPARNA HOME, SEARCH OCH INFO
 let currentClass;
 for (let i = 0; i < btn.length; i++) {
-    btn[i].addEventListener("click", function(){ // GER KNAPPARNA EN EVENT LISTENER
+    btn[i].addEventListener("click", function () { // GER KNAPPARNA EN EVENT LISTENER
         currentClass = "." + btn[i].innerHTML.toLowerCase()//HÄMTAR INNERTEXT OCH OMVANDLAR DET TILL LOWER CASE SAMT SPARAR DET I "CURRENTCLASS" VARIABELN
-    
+
         hideAllSections() // KALLAR PÅ FUNKTIONEN SOM LÄGGER TILL HIDDEN PÅ ALLA SEKTIONS
         document.querySelector(currentClass).classList.remove("hidden")//TAR BORT HIDDEN FRÅN JUST DEN SEKTION MAN VÄLJER GENOM ATT KLICKA PÅ KNAPPEN
     })
 }
- 
+
 async function randomBeer() {
-    const request = await fetch (`https://api.punkapi.com/v2/beers/random`)
+    const request = await fetch(`https://api.punkapi.com/v2/beers/random`)
     const response = await request.json()
     return response
 }
 
-async function print(){
+async function print() {
     let randomBeerFetch = await randomBeer()
     // console.log(randomBeerFetch[0])
     if (randomBeerFetch[0].image_url != null) {
@@ -33,7 +33,7 @@ async function print(){
         document.querySelector(".info-beer-card-img").src = randomBeerFetch[0].image_url
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
     }
-    if(randomBeerFetch[0].image_url === null){
+    if (randomBeerFetch[0].image_url === null) {
         console.log("we got a null!");
 
         //Landing page beer card
@@ -44,7 +44,7 @@ async function print(){
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
         document.querySelector(".info-beer-card-img").style = "max-width: 300px"
     }
-        
+
     document.querySelector(".home-beer-card-name p").innerHTML = randomBeerFetch[0].name
 
     var a = document.getElementsByClassName("info-beer-information")[0]
@@ -59,7 +59,7 @@ async function print(){
     a.innerHTML += "<li>" + "" + "</li>"
     a.innerHTML += "<li>" + "<strong> Ingredients: </strong>" + randomBeerFetch[0].ingredients + "</li>"
 
-    
+
 }
 print()
 
@@ -67,7 +67,7 @@ print()
 document.querySelector(".home-random-beer-button").addEventListener("click", print)
 document.querySelector(".see-more").addEventListener("click", seeMore)
 
-function seeMore(){
+function seeMore() {
 
     hideAllSections()
     document.querySelector(".info").classList.remove("hidden")
@@ -77,22 +77,53 @@ function seeMore(){
 /* ----------------------------------------------- SEARCH PAGE ----------------------------------------- */
 
 
-let fetchBeerByName = async function(userInput) {
+let fetchBeerByName = async function (userInput) {
+    let root = "https://api.punkapi.com/v2/beers?beer_name=";
 
-    let root  = "https://api.punkapi.com/v2/beers?beer_name=";
-
-
-    let request  = await fetch(root + userInput);
+    let request = await fetch(root + userInput);
     let result = await request.json();
-    
+
     return result;
 
 }
 
+
+
+let createList = async function (userInput) {
+
+    let fetchResult = await fetchBeerByName(userInput);
+
+    for(let i = 0; i < list.length; i++) {
+        list[i].innerHTML = fetchResult[i].name;
+    }
+}
+
+
+
+let showList = function () {
+    let searchMain = document.querySelector(".search-main");
+    let ul = document.createElement("ul");
+    searchMain.appendChild(ul);
+    ul.classList.add("ul-form");
+
+    ///creates 3 li elements
+    for (let i = 0; i < 3; i++) {
+        let li = document.createElement("li");
+        ul.appendChild(li);
+        list = document.querySelectorAll(".ul-form li");
+        list[i].classList.add("li-form");
+
+    }
+}
+
+
+
 let searchButton = document.querySelector(".fa-search");
 let searchInput = document.querySelector("input");
 
-searchButton.addEventListener("click", function() {
+searchButton.addEventListener("click", function () {
+    showList();
+    createList(searchInput.value);
 
-    console.log(fetchBeerByName(searchInput.value));
+
 })
