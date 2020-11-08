@@ -25,8 +25,9 @@ async function randomBeer() {
     return response
 }
 
-async function print() {
-    let randomBeerFetch = await randomBeer()
+
+async function print(desiredFetch) {
+    let randomBeerFetch = await desiredFetch
     // console.log(randomBeerFetch[0])
     if (randomBeerFetch[0].image_url != null) {
         document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
@@ -61,7 +62,7 @@ async function print() {
 
 
 }
-print()
+print(randomBeer());
 
 
 document.querySelector(".home-random-beer-button").addEventListener("click", print)
@@ -77,10 +78,13 @@ function seeMore() {
 /* ----------------------------------------------- SEARCH PAGE ----------------------------------------- */
 
 
-let searchButton = document.querySelector(".fa-search");
-let searchInput = document.querySelector("input");
+//global variables
+var searchButton = document.querySelector(".fa-search");
+var searchInput = document.querySelector("input");
+var list;
 
-let fetchBeerByName = async function (userInput) {
+
+let fetchBySearch = async function (userInput) {
     let root = "https://api.punkapi.com/v2/beers?beer_name=";
 
     let request = await fetch(root + userInput);
@@ -91,9 +95,12 @@ let fetchBeerByName = async function (userInput) {
 }
 
 
+
+
+
 let createList = async function (userInput) {
 
-    let fetchResult = await fetchBeerByName(userInput);
+    let fetchResult = await fetchBySearch(userInput);
 
     let searchMain = document.querySelector(".search-main");
     let ul = document.createElement("ul");
@@ -108,25 +115,46 @@ let createList = async function (userInput) {
         list[i].classList.add("li-form");
 
         list[i].innerHTML = fetchResult[i].name;
-
-        //checks if search form is empty
-        if (userInput.length == 0) {
-            list[i].style.display = "none";
-            list[i].innerHTML = "";
-            console.log("fuck")
-        }
-        else {
-            console.log("hello");
-            list[i].style.display = "";
-        }
-      
         
     }
+      
+    //makes the list clickable
+    for (let i = 0; i < list.length; i++) {
+        console.log("hello")
+        list[i].addEventListener("click", function () {
+            print(fetchBySearch(list[i].innerHTML));
+            seeMore();
+        })
+    }
+}
 
+let hideList = function() {
+    if(searchInput.value.length == 0) {
+
+        for(let i = 0; i < list.length; i++) {
+      
+            list[i].remove();
+        }
+        
+    }
+    else {
+
+        for(let i = 0; i < list.length; i++) {
+            list[i].style.display = "";
+        }
+    }
 }
 
 
 searchInput.addEventListener("keyup", function () {
-    
+
     createList(searchInput.value);
+  
+    hideList();
+
+
 })
+
+
+
+
