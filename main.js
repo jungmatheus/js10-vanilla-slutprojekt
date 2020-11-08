@@ -96,8 +96,6 @@ let fetchBySearch = async function (userInput) {
 
 
 
-
-
 let createList = async function (userInput) {
 
     let fetchResult = await fetchBySearch(userInput);
@@ -149,10 +147,7 @@ let hideList = function() {
 searchInput.addEventListener("keyup", function () {
 
     createList(searchInput.value);
-  
     hideList();
-
-
 })
 
 
