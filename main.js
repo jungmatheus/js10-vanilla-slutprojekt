@@ -26,7 +26,7 @@ let dataRandomBeer = []
 // console.log(dataRandomBeer.name)
 
 async function randomBeer() {
-    // dataRandomBeer = []
+    dataRandomBeer = []
     const request = await fetch(`https://api.punkapi.com/v2/beers/random`)
     const response = await request.json()
     dataRandomBeer.push(
