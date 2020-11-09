@@ -25,16 +25,15 @@ async function randomBeer() {
     return response
 }
 
+async function printRandomBeer(){
+    let testRandomBeerPrint = await randomBeer()
 
-async function print(desiredFetch) {
-    let randomBeerFetch = await desiredFetch
-    // console.log(randomBeerFetch[0])
-    if (randomBeerFetch[0].image_url != null) {
-        document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
-        document.querySelector(".info-beer-card-img").src = randomBeerFetch[0].image_url
+    if (testRandomBeerPrint[0].image_url != null) {
+        document.querySelector(".beer-card-img").src = testRandomBeerPrint[0].image_url
+        document.querySelector(".info-beer-card-img").src = testRandomBeerPrint[0].image_url
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
     }
-    if (randomBeerFetch[0].image_url === null) {
+    if (testRandomBeerPrint[0].image_url === null) {
         console.log("we got a null!");
 
         //Landing page beer card
@@ -45,9 +44,34 @@ async function print(desiredFetch) {
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
         document.querySelector(".info-beer-card-img").style = "max-width: 300px"
     }
+    document.querySelector(".home-beer-card-name p").innerHTML = testRandomBeerPrint[0].name
 
-    document.querySelector(".home-beer-card-name p").innerHTML = randomBeerFetch[0].name
 
+}
+printRandomBeer()
+document.querySelector(".home-random-beer-button").addEventListener("click", printRandomBeer)
+
+
+async function print(desiredFetch) {
+    let randomBeerFetch = await desiredFetch
+
+    if (randomBeerFetch[0].image_url != null) {
+        // document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
+        document.querySelector(".info-beer-card-img").src = randomBeerFetch[0].image_url
+        document.querySelector(".info-beer-card-img").style = "max-height: 400px"
+    }
+    if (randomBeerFetch[0].image_url === null) {
+        console.log("we got a null!");
+
+        //Landing page beer card
+        // document.querySelector(".beer-card-img").src = "images/baby-yoda.jpeg"
+        // document.querySelector(".beer-card-img").style = "max-width: 300px"
+        //Info page beer card
+        document.querySelector(".info-beer-card-img").src = "images/baby-yoda.jpeg"
+        document.querySelector(".info-beer-card-img").style = "max-height: 400px"
+        document.querySelector(".info-beer-card-img").style = "max-width: 300px"
+    }
+ 
     var a = document.getElementsByClassName("info-beer-information")[0]
     a.innerHTML = "<ul>"
     //all information om ölen som visas under INFO page
@@ -60,19 +84,19 @@ async function print(desiredFetch) {
     a.innerHTML += "<li>" + "" + "</li>"
     a.innerHTML += "<li>" + "<strong> Ingredients: </strong>" + randomBeerFetch[0].ingredients + "</li>"
 
-
 }
 print(randomBeer());
 
 
-document.querySelector(".home-random-beer-button").addEventListener("click", print)
-document.querySelector(".see-more").addEventListener("click", seeMore)
+
+
 
 function seeMore() {
-
     hideAllSections()
     document.querySelector(".info").classList.remove("hidden")
 }
+document.querySelector(".see-more").addEventListener("click", seeMore)
+
 
 
 /* ----------------------------------------------- SEARCH PAGE ----------------------------------------- */
