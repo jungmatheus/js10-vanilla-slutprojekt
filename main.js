@@ -71,37 +71,15 @@ document.querySelector(".home-random-beer-button").addEventListener("click", pri
 async function print(desiredFetch) {
     let randomBeerFetch = await desiredFetch
 
-    // fillTheInfo(randomBeerFetch)
-    if (randomBeerFetch[0].image_url != null) {
-        document.querySelector(".info-beer-card-img").src = randomBeerFetch[0].image_url
-        document.querySelector(".info-beer-card-img").style = "max-height: 400px"
-    }
-    if (randomBeerFetch[0].image_url === null) {
-        console.log("we got a null!");
+    fillTheInfo(randomBeerFetch)
 
-        //Info page beer card
-        document.querySelector(".info-beer-card-img").src = "images/baby-yoda.jpeg"
-        document.querySelector(".info-beer-card-img").style = "max-height: 400px; max-width: 300px"
-        // document.querySelector(".info-beer-card-img").style = "max-width: 300px"
-    }
-
-    var a = document.getElementsByClassName("info-beer-information")[0]
-    a.innerHTML = "<ul>"
-    //all information om ölen som visas under INFO page
-    a.innerHTML += "<li>" + "<strong> Name: </strong>" + randomBeerFetch[0].name + "</li>"
-    a.innerHTML += "<li>" + "<strong> Alcohol by volume: </strong>" + randomBeerFetch[0].abv + "</li>"
-    a.innerHTML += "<li>" + "<strong> Description: </strong>" + randomBeerFetch[0].description + "</li>"
-    a.innerHTML += "<li>" + "<strong> Volume: </strong>" + randomBeerFetch[0].volume.value + " " + randomBeerFetch[0].volume.unit + "</li>"
-    a.innerHTML += "<li>" + "<strong> Food pairing : </strong>" + randomBeerFetch[0].food_pairing + "</li>"
-    a.innerHTML += "<li>" + "<strong> Brewer tips : </strong>" + randomBeerFetch[0].brewers_tips + "</li>"
-    a.innerHTML += "<li>" + "" + "</li>"
-    a.innerHTML += "<li>" + "<strong> Ingredients: </strong>" + randomBeerFetch[0].ingredients + "</li>"
 }
-print(randomBeer());
+//print(randomBeer());
 
 
 function seeMore() {
     hideAllSections()
+    //skriva ut de sparade informationen om random beer card på info page
     document.querySelector(".info").classList.remove("hidden")
 }
 document.querySelector(".see-more").addEventListener("click", seeMore)
