@@ -47,6 +47,19 @@ async function printRandomBeer(){
     document.querySelector(".home-beer-card-name p").innerHTML = testRandomBeerPrint[0].name
 
 
+    var a = document.getElementsByClassName("info-beer-information")[0]
+    a.innerHTML = "<ul>"
+    //all information om ölen som visas under INFO page
+    a.innerHTML += "<li>" + "<strong> Name: </strong>" + testRandomBeerPrint[0].name + "</li>"
+    a.innerHTML += "<li>" + "<strong> Alcohol by volume: </strong>" + testRandomBeerPrint[0].abv + "</li>"
+    a.innerHTML += "<li>" + "<strong> Description: </strong>" + testRandomBeerPrint[0].description + "</li>"
+    a.innerHTML += "<li>" + "<strong> Volume: </strong>" + testRandomBeerPrint[0].volume.value + " " + testRandomBeerPrint[0].volume.unit + "</li>"
+    a.innerHTML += "<li>" + "<strong> Food pairing : </strong>" + testRandomBeerPrint[0].food_pairing + "</li>"
+    a.innerHTML += "<li>" + "<strong> Brewer tips : </strong>" + testRandomBeerPrint[0].brewers_tips + "</li>"
+    a.innerHTML += "<li>" + "" + "</li>"
+    a.innerHTML += "<li>" + "<strong> Ingredients: </strong>" + testRandomBeerPrint[0].ingredients + "</li>"
+
+
 }
 printRandomBeer()
 document.querySelector(".home-random-beer-button").addEventListener("click", printRandomBeer)
@@ -85,7 +98,7 @@ async function print(desiredFetch) {
     a.innerHTML += "<li>" + "<strong> Ingredients: </strong>" + randomBeerFetch[0].ingredients + "</li>"
 
 }
-print(randomBeer());
+//print(randomBeer());
 
 
 
