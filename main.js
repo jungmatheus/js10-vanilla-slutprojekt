@@ -231,7 +231,6 @@ let createList = async function (userInput) {
       
     //makes the list clickable
     for (let i = 0; i < list.length; i++) {
-        // console.log("hello")
         list[i].addEventListener("click", function () {
             print(fetchBySearch(list[i].innerHTML));
             seeMore();

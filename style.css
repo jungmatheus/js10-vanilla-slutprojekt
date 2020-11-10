@@ -250,6 +250,14 @@ ul {
 }
 
 
+.filters {
+    width:100px;
+    height: 30px;
+    background-color:grey;
+    align-self:flex-end;  
+}
+
+
 /* ------------------------------------------------------- SECTION SEARCH PAGE --------------------------------------------------*/
 
 
