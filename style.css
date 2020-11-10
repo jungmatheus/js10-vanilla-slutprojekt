@@ -122,6 +122,21 @@ a:hover{
     align-items: center;
 }
 
+    
+
+.home-random-beer-button button{
+    padding: 10px;
+    border-radius: 22px;
+    background-color: black;
+    color: teal;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.home-random-beer-button button:hover{
+    cursor: pointer;
+}
+
 .see-more{
     font-style: italic;
     font-size: 14px;
