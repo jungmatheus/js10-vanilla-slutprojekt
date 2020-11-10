@@ -176,11 +176,19 @@ a:hover{
 
 /* ------------------------------------------------------- SECTION SEARCH PAGE --------------------------------------------------*/
 
-.search-content-wrapper{
+.search-wrapper {
+ display:grid;
+ grid-template-columns:auto auto;
+}
+
+
+.search-main-wrapper{
+    grid-column:2;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    margin-left:-300px;
 }
 
 .search-header {
@@ -195,7 +203,6 @@ a:hover{
 
 .search-main {
     height:400px;
- 
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -250,11 +257,22 @@ ul {
 }
 
 
+.filter-wrapper {
+    width:100px;
+    height:1000px;
+    grid-column:1;
+}
+
 .filters {
+    margin:10px 15px;
     width:100px;
     height: 30px;
     background-color:grey;
-    align-self:flex-end;  
+    margin-top:40px;
+}
+
+.malt {
+    
 }
 
 
