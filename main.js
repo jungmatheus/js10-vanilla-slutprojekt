@@ -53,6 +53,7 @@ async function randomBeer() {
 
 function fillTheInfo(source) {
     if (source[0].image_url != null) {
+
         document.querySelector(".beer-card-img").src = source[0].image_url
         document.querySelector(".info-beer-card-img").src = source[0].image_url
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
@@ -61,9 +62,12 @@ function fillTheInfo(source) {
         console.log("we got a null!");
 
         //Landing page beer card
+        
+        // document.querySelector(".info-no-picture").classList.remove("hidden")
         document.querySelector(".beer-card-img").src = "images/baby-yoda.jpeg"
         document.querySelector(".beer-card-img").style = "max-width: 300px"
         //Info page beer card
+        
         document.querySelector(".info-beer-card-img").src = "images/baby-yoda.jpeg"
         document.querySelector(".info-beer-card-img").style = "max-height: 400px; max-width: 300px"
     }
@@ -101,7 +105,8 @@ async function print(desiredFetch) {
     // fillTheInfo(randomBeerFetch)
 
     if (randomBeerFetch[0].image_url != null) {
-        // document.querySelector(".beer-card-img").src = randomBeerFetch[0].image_url
+        
+        // document.querySelector(".info-no-picture").classList.add("hidden")
         document.querySelector(".info-beer-card-img").src = randomBeerFetch[0].image_url
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
     }
@@ -109,9 +114,8 @@ async function print(desiredFetch) {
         console.log("we got a null!");
 
         //Landing page beer card
-        // document.querySelector(".beer-card-img").src = "images/baby-yoda.jpeg"
-        // document.querySelector(".beer-card-img").style = "max-width: 300px"
-        //Info page beer card
+        
+        // document.querySelector(".info-no-picture").classList.remove("hidden")
         document.querySelector(".info-beer-card-img").src = "images/baby-yoda.jpeg"
         document.querySelector(".info-beer-card-img").style = "max-height: 400px; max-width: 300px"
     }

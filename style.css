@@ -84,6 +84,7 @@ a:hover{
 
 .home-beer-card-pic{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -162,6 +163,13 @@ a:hover{
 
 .info-beer-card{
     padding: 0 80px;
+}
+
+.info-no-picture,
+.no-picture{
+    width: 300px;
+    padding: 10px 10px;
+    text-align: center;
 }
 
 .info-beer-information{
