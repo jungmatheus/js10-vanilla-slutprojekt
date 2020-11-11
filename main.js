@@ -265,31 +265,83 @@ searchInput.addEventListener("keyup", function () {
 /* --------------------------------- advanced search ---------------------------- */
 
 
-let advancedSearch = async function(desiredFilter) {
-  let root =  "https://api.punkapi.com/v2/beers?";
+// let advancedSearch = async function(desiredFilter) {
+//   let root =  "https://api.punkapi.com/v2/beers?";
 
-  let request = await fetch(root + desiredFilter);
-  let result = await request.json();
+//   let request = await fetch(root + desiredFilter);
+//   let result = await request.json();
+//   return result;
+ 
+//  }
 
+//  let malt = document.querySelector(".malt");
+//  let searchB
 
+//  malt.addEventListener("click", function() {
+//     console.log(advancedSearch("malt=Caramalt|Amber"))
+//  })
 
 
   
- return result;
 
+
+
+
+
+
+// FUNKTIONERNA TILL AVANCERAD SÖKNING--------------
+
+//Search by malt
+async function fetchByMalt(malt){
+    const request = await fetch (`https://api.punkapi.com/v2/beers?malt=${malt}`)
+    const answer = await request.json()
+    // console.log(answer)
+    return answer
 }
 
+let chosenMalt = "amber"
+fetchByMalt(chosenMalt)
+
+//-----------------------------------------
+
+//1. Search by hops
+async function fetchByHops(hops){
+    const request = await fetch (`https://api.punkapi.com/v2/beers?hops=${hops}`)
+    const answer = await request.json()
+    console.log(answer)
+    return answer
+}
+
+let chosenHops = "Saaz"
+fetchByHops(chosenHops)
+
+//-----------------------------------------
+
+//2. Search by ABV GREATER than xxxx
+async function fetchByAbvGreaterThan(abvG){
+    const request = await fetch (`https://api.punkapi.com/v2/beers?abv_gt=${abvG}`)
+    const answer = await request.json()
+    console.log(answer)
+    return answer
+}
+
+let chosenAbvGreaterThan = "5"
+fetchByAbvGreaterThan(chosenAbvGreaterThan)
+
+//-----------------------------------------
+
+//3. Search by ABV LESS than xxxx
+async function fetchByAbvLessThan(abvL){
+    const request = await fetch (`https://api.punkapi.com/v2/beers?abv_lt=${abvL}`)
+    const answer = await request.json()
+    console.log(answer)
+    return answer
+}
+
+let chosenAbvLessThan = "5"
+fetchByAbvLessThan(chosenAbvLessThan)
 
 
-
-
-let malt = document.querySelector(".malt");
-let searchB
-
-
-malt.addEventListener("click", function() {
-   console.log(advancedSearch("malt=Caramalt|Amber"))
-})
 
 
 
