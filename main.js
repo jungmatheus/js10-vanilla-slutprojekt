@@ -197,7 +197,7 @@ document.querySelector(".see-more").addEventListener("click", seeMore)
 
 //global variables
 var searchButton = document.querySelector(".fa-search");
-var searchInput = document.querySelector("input");
+var searchInput = document.querySelector("form input");
 var list;
 
 
@@ -235,7 +235,6 @@ let createList = async function (userInput) {
       
     //makes the list clickable
     for (let i = 0; i < list.length; i++) {
-        // console.log("hello")
         list[i].addEventListener("click", function () {
             print(fetchBySearch(list[i].innerHTML));
             seeMore();
@@ -263,9 +262,34 @@ searchInput.addEventListener("keyup", function () {
 })
       
         
+/* --------------------------------- advanced search ---------------------------- */
+
+
+let advancedSearch = async function(desiredFilter) {
+  let root =  "https://api.punkapi.com/v2/beers?";
+
+  let request = await fetch(root + desiredFilter);
+  let result = await request.json();
 
 
 
+
+  
+ return result;
+
+}
+
+
+
+
+
+let malt = document.querySelector(".malt");
+let searchB
+
+
+malt.addEventListener("click", function() {
+   console.log(advancedSearch("malt=Caramalt|Amber"))
+})
 
 
 
