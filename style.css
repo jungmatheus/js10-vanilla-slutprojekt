@@ -269,6 +269,7 @@ ul {
     width:100px;
     height:1000px;
     grid-column:1;
+    margin-left: 20px;
 }
 
 .filters {

@@ -197,7 +197,7 @@ document.querySelector(".see-more").addEventListener("click", seeMore)
 
 //global variables
 var searchButton = document.querySelector(".fa-search");
-var searchInput = document.querySelector("form input");
+var searchInput = document.querySelector(".regular-search");
 var list;
 
 
@@ -234,12 +234,12 @@ let createList = async function (userInput) {
     }
       
     //makes the list clickable
-    for (let i = 0; i < list.length; i++) {
-        list[i].addEventListener("click", function () {
-            print(fetchBySearch(list[i].innerHTML));
-            seeMore();
-        })
-    }
+     for (let i = 0; i < list.length; i++) {
+         list[i].addEventListener("click", function () {
+             print(fetchBySearch(list[i].innerHTML));
+             seeMore();
+         })
+     }
 }
 
 let hideList = function() {
@@ -249,11 +249,11 @@ let hideList = function() {
             list[i].remove();
         }
     }
-    // else{
-    //     for(let i = 0; i < list.length; i++) {
-    //         list[i].style.display = "";
-    //     }
-    // }
+     else{
+         for(let i = 0; i < list.length; i++) {
+             list[i].style.display = "";
+         }
+     }
 }
 
 searchInput.addEventListener("keyup", function () {
@@ -282,20 +282,92 @@ searchInput.addEventListener("keyup", function () {
 //  })
 
 
+
+
   
+//VARIABLER AVANCERAD SÖKNING-------------------    
 
+let hopsInput = ""
+let maltInput = ""
+let brewedBtInput = ""
+let brewedAtInput = ""
+let AbvGtInput = ""
+let AbvLtInput = ""
 
+let urlToFetch = ""
+let plus = "&"
+// Måste fixa så att man lägger till "&" när man konkatenerar alla "inputs" innan man skickar den till Fetch
+function oneFunction(){
+
+    if (document.getElementById('hops').value === "") {
+        hopsInput = ""
+    }else{
+        hopsInput = "?hops=" + document.getElementById('hops').value
+    }
+
+    
+    if (document.getElementById('malt').value === "") {
+        maltInput = ""
+    }else{
+        maltInput = "?malt=" + document.getElementById('malt').value
+    }
+    
+    if (document.getElementById('bbt').value === "") {
+        brewedBtInput = ""
+    }else{
+        brewedBtInput = "?brewed_before=" + document.getElementById('bbt').value
+    }
+        
+    if (document.getElementById('bat').value === "") {
+        brewedAtInput = ""
+    }else{
+        brewedAtInput = "?brewed_after=" + document.getElementById('bat').value
+    }
+    
+    if (document.getElementById('abvGt').value === "") {
+        AbvGtInput = ""
+    }else{
+        AbvGtInput = "?abv_gt=" + document.getElementById('abvGt').value
+    }
+    
+    if (document.getElementById('abvLt').value === "") {
+        AbvLtInput = ""
+    }else{
+        AbvLtInput = "?abv_lt=" + document.getElementById('abvLt').value
+    }
+        
+    console.log(hopsInput) 
+    console.log(maltInput) 
+    console.log(brewedBtInput) 
+    console.log(brewedAtInput) 
+    console.log(AbvGtInput) 
+    console.log(AbvLtInput) 
+    advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
+    
+}
 
 
 
 
 // FUNKTIONERNA TILL AVANCERAD SÖKNING--------------
 
+
+async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abvGreater, abvLesser){
+    const request = await fetch (`https://api.punkapi.com/v2/beers${hops}${malt}${brewedBeforeThan}${brewedAfterThan}${abvGreater}${abvLesser}`)
+    
+    const answer = await request.json()
+    console.log(answer)
+}
+
+
+
+
+
 //1. Search by NAME
 async function fetchByName(name){
     const request = await fetch (`https://api.punkapi.com/v2/beers?beer_name=${name}`)
     const answer = await request.json()
-    console.log(answer)
+    //console.log(answer)
     return answer
 }
 
@@ -368,7 +440,7 @@ fetchByAbvLessThan(chosenAbvLessThan)
 async function fetchByBrewedBeforeThan(brewedBT){
     const request = await fetch (`https://api.punkapi.com/v2/beers?brewed_before=${brewedBT}`)
     const answer = await request.json()
-    console.log(answer)
+    //console.log(answer)
     return answer
 }
 
@@ -380,14 +452,16 @@ fetchByBrewedBeforeThan(chosenBrewedBT)
 
 //7. Search by brewed "AFTER" than xxxx
 async function fetchByBrewedAfterThan(brewedAT){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?brewed_after=${brewedAT}`)
+    const request = await fetch (`https://api.punkapi.com/v2/beers?brewed_after=${brewedAT}?page=2&per_page=80`)
     const answer = await request.json()
-    console.log(answer)
+    //console.log(answer)
     return answer
 }
 
 let chosenBrewedAT = "10-2011"
 fetchByBrewedAfterThan(chosenBrewedAT)
+
+// https://api.punkapi.com/v2/beers?brewed_before=11-2012&abv_gt=6
 
 
 

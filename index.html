@@ -53,16 +53,9 @@
     </section>
     <section class="search hidden">
         <div class="search-wrapper">
-            <div class="filter-wrapper">
-                <label class="malt">Malt
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
-                <button class="filters">Hops</button>
-                <button class="filters">Malt</button>
-                <button class="filters">Brewed before / after</button>
-                <button class="filters">ABV</button>
-            </div>
+            
+            
+            
             <div class="search-main-wrapper">
                 <div class="search-header">
                     <img src="35123-52815.png">
@@ -70,12 +63,37 @@
                 <main class="search-main">
                     <h2>What are you looking for?</h2>
                     <form>
-                        <input type="text" placeholder="Search...">
+                        <input class="regular-search" type="text" placeholder="Search...">
                         <i class="fas fa-search"></i>
                     </form>
-    
+                    
                 </main>
-    
+                
+            </div>
+            
+            
+            
+            <div class="filter-wrapper">
+                <label for="hops">Hops: </label>
+                <input placeholder="Enter a hop" type="text" id="hops">
+                
+                <label for="malt">Malt: </label>
+                <input placeholder="Enter a malt" type="text" id="malt">
+               
+                <label for="bbt">Brewed before than: </label>
+                <input placeholder="Enter a date before" type="text" id="bbt">
+                
+                <label for="bat">Brewed after than: </label>
+                <input placeholder="Enter a date after" type="text" id="bat">
+                
+                <label for="abvGt">ABV greater than: </label>
+                <input placeholder="Enter an ABV greater" type="text" id="abvGt">
+                
+                <label for="abvLt">ABV lesser than: </label>
+                <input placeholder="Enter an ABV lesser" type="text" id="abvLt">
+
+                <button onclick="oneFunction()">dame click</button>
+
             </div>
         </div>
     </section>
