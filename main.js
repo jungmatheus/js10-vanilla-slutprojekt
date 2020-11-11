@@ -295,46 +295,47 @@ let AbvGtInput = ""
 let AbvLtInput = ""
 
 let urlToFetch = ""
-let plus = "&"
-// Måste fixa så att man lägger till "&" när man konkatenerar alla "inputs" innan man skickar den till Fetch
+
 function oneFunction(){
 
     if (document.getElementById('hops').value === "") {
         hopsInput = ""
     }else{
-        hopsInput = "?hops=" + document.getElementById('hops').value
+        hopsInput = "?hops=" + document.getElementById('hops').value + "&"
     }
 
     
     if (document.getElementById('malt').value === "") {
         maltInput = ""
     }else{
-        maltInput = "?malt=" + document.getElementById('malt').value
+        maltInput = "?malt=" + document.getElementById('malt').value + "&"
     }
     
     if (document.getElementById('bbt').value === "") {
         brewedBtInput = ""
     }else{
-        brewedBtInput = "?brewed_before=" + document.getElementById('bbt').value
+        brewedBtInput = "?brewed_before=" + document.getElementById('bbt').value + "&"
     }
         
     if (document.getElementById('bat').value === "") {
         brewedAtInput = ""
     }else{
-        brewedAtInput = "?brewed_after=" + document.getElementById('bat').value
+        brewedAtInput = "?brewed_after=" + document.getElementById('bat').value + "&"
     }
     
     if (document.getElementById('abvGt').value === "") {
         AbvGtInput = ""
     }else{
-        AbvGtInput = "?abv_gt=" + document.getElementById('abvGt').value
+        AbvGtInput = "?abv_gt=" + document.getElementById('abvGt').value + "&"
     }
     
     if (document.getElementById('abvLt').value === "") {
         AbvLtInput = ""
     }else{
-        AbvLtInput = "?abv_lt=" + document.getElementById('abvLt').value
+        AbvLtInput = "?abv_lt=" + document.getElementById('abvLt').value + "&"
     }
+
+    urlToFetch = hopsInput + maltInput + brewedBtInput + brewedAtInput + AbvGtInput + AbvLtInput
         
     console.log(hopsInput) 
     console.log(maltInput) 
@@ -342,6 +343,8 @@ function oneFunction(){
     console.log(brewedAtInput) 
     console.log(AbvGtInput) 
     console.log(AbvLtInput) 
+    
+    console.log(urlToFetch) 
     advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
     
 }
