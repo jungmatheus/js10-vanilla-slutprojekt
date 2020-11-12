@@ -33,12 +33,16 @@ header{
 
 .header-btn{
     margin-left: 34px;
-    padding:  4px 10px;
-    border-radius: 6px;
-    border: 1px solid #000c0b;
-    font-size: 14px;
-    background-color: #048980;
-    color: black;
+    color:#048980;
+    display:flex;
+    font-size: 20px;
+   
+  
+}
+
+.header-btn p {
+    margin-left:5px;
+    
 }
 
 .header-btn:hover{
@@ -128,8 +132,8 @@ a:hover{
 .home-random-beer-button button{
     padding: 10px;
     border-radius: 22px;
-    background-color: black;
-    color: teal;
+    background-color: rgba(0, 0, 0, 0.803);
+    color: #048980;
     font-weight: bold;
     font-size: 16px;
 }

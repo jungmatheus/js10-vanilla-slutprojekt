@@ -11,7 +11,7 @@ function hideAllSections() {
 // console.log(response)
 
 
-let btn = document.querySelectorAll(".btn-wrapper button")//TAR KNAPPARNA HOME, SEARCH OCH INFO
+let btn = document.querySelectorAll(".header-btn p")//TAR KNAPPARNA HOME, SEARCH 
 let currentClass;
 for (let i = 0; i < btn.length; i++) {
     btn[i].addEventListener("click", function () { // GER KNAPPARNA EN EVENT LISTENER
