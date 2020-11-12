@@ -265,14 +265,32 @@ searchInput.addEventListener("keyup", function () {
 /* --------------------------------- advanced search ---------------------------- */
 
 
+
+////filter button
+
 let filterButton = document.querySelector(".filter-button");
+
+let clicked = false;
 
 filterButton.addEventListener("click", function() {
     const filters = document.querySelectorAll(".filter-wrapper div");
-
-    for(let i = 0; i < filters.length; i++) {
-        filters[i].classList.remove("inactive");
+    const applyButton = document.querySelector(".filter-wrapper button");
+    
+    if(clicked == false) {
+        applyButton.classList.remove("inactive");
+        for(let i = 0; i < filters.length; i++) {
+            filters[i].classList.remove("inactive");
+           clicked = true;
+        }
     }
+    else {
+        applyButton.classList.add("inactive");
+        for(let i = 0; i < filters.length; i++) {
+            filters[i].classList.add("inactive");
+           clicked = false;
+        }
+    }
+   
 })
 
 
@@ -280,23 +298,6 @@ filterButton.addEventListener("click", function() {
 
   
 //VARIABLER AVANCERAD SÖKNING-------------------    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 let hopsInput = ""
 let maltInput = ""
