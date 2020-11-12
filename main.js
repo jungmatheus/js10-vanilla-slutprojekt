@@ -265,27 +265,38 @@ searchInput.addEventListener("keyup", function () {
 /* --------------------------------- advanced search ---------------------------- */
 
 
-// let advancedSearch = async function(desiredFilter) {
-//   let root =  "https://api.punkapi.com/v2/beers?";
+let filterButton = document.querySelector(".filter-button");
 
-//   let request = await fetch(root + desiredFilter);
-//   let result = await request.json();
-//   return result;
- 
-//  }
+filterButton.addEventListener("click", function() {
+    const filters = document.querySelectorAll(".filter-wrapper div");
 
-//  let malt = document.querySelector(".malt");
-//  let searchB
-
-//  malt.addEventListener("click", function() {
-//     console.log(advancedSearch("malt=Caramalt|Amber"))
-//  })
+    for(let i = 0; i < filters.length; i++) {
+        filters[i].classList.remove("inactive");
+    }
+})
 
 
 
 
   
 //VARIABLER AVANCERAD SÖKNING-------------------    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let hopsInput = ""
 let maltInput = ""
@@ -361,110 +372,6 @@ async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abv
     const answer = await request.json()
     console.log(answer)
 }
-
-
-
-
-
-//1. Search by NAME
-async function fetchByName(name){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?beer_name=${name}`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenName = "citra"
-fetchByName(chosenName)
-
-//-----------------------------------------
-
-
-
-
-//2. Search by malt
-async function fetchByMalt(malt){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?malt=${malt}`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenMalt = "amber"
-fetchByMalt(chosenMalt)
-
-//-----------------------------------------
-
-
-
-//3. Search by hops
-async function fetchByHops(hops){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?hops=${hops}`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenHops = "Saaz"
-fetchByHops(chosenHops)
-
-//-----------------------------------------
-
-
-//4. Search by ABV "GREATER" than xxxx
-async function fetchByAbvGreaterThan(abvG){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?abv_gt=${abvG}`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenAbvGreaterThan = "5"
-fetchByAbvGreaterThan(chosenAbvGreaterThan)
-
-//-----------------------------------------
-
-
-//5. Search by ABV "LESS" than xxxx
-async function fetchByAbvLessThan(abvL){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?abv_lt=${abvL}`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenAbvLessThan = "5"
-fetchByAbvLessThan(chosenAbvLessThan)
-
-//-----------------------------------------
-
-
-//6. Search by brewed "BEFORE" than xxxx
-async function fetchByBrewedBeforeThan(brewedBT){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?brewed_before=${brewedBT}`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenBrewedBT = "10-2011"
-fetchByBrewedBeforeThan(chosenBrewedBT)
-
-//-----------------------------------------
-
-
-//7. Search by brewed "AFTER" than xxxx
-async function fetchByBrewedAfterThan(brewedAT){
-    const request = await fetch (`https://api.punkapi.com/v2/beers?brewed_after=${brewedAT}?page=2&per_page=80`)
-    const answer = await request.json()
-    //console.log(answer)
-    return answer
-}
-
-let chosenBrewedAT = "10-2011"
-fetchByBrewedAfterThan(chosenBrewedAT)
-
-// https://api.punkapi.com/v2/beers?brewed_before=11-2012&abv_gt=6
 
 
 
