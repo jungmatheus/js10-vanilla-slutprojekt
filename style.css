@@ -77,14 +77,14 @@ a:hover{
     grid-template-columns: 1fr;
     grid-template-rows: 400px 160px 60px;
 }
-.home-beer-card{
+/* .home-beer-card{
     display: grid;
     width: 340px;
     grid-template-rows: 1fr;
     grid-template-rows: auto auto;
     border-radius: 20px;
     border: 1px solid black;
-}
+} */
 
 .home-beer-card-pic{
     display: flex;
