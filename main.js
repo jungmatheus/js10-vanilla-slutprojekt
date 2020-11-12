@@ -201,10 +201,14 @@ var searchInput = document.querySelector(".regular-search");
 var list;
 
 
-let fetchBySearch = async function (userInput) {
-    let root = "https://api.punkapi.com/v2/beers?beer_name=";
+let fetchBySearch = async function (userInput, advancedSr) {
+    if(advancedSr == undefined) {
+        advancedSr = "";
+    }
+    let root = "https://api.punkapi.com/v2/beers?beer_name=" + userInput + "&" + advancedSr;
+    console.log(root)
 
-    let request = await fetch(root + userInput);
+    let request = await fetch(root)
     let result = await request.json();
 
     return result;
@@ -213,9 +217,11 @@ let fetchBySearch = async function (userInput) {
 
 
 
-let createList = async function (userInput) {
-
-    let fetchResult = await fetchBySearch(userInput);
+let createList = async function (userInput, advancedSr) {
+    if(advancedSr == undefined) {
+        advancedSr = "";
+    }
+    let fetchResult = await fetchBySearch(userInput, advancedSr);
 
     let searchMain = document.querySelector(".search-main");
     let ul = document.createElement("ul");
@@ -260,7 +266,7 @@ let hideList = function() {
 }
 
 searchInput.addEventListener("keyup", function () {
-    createList(searchInput.value);
+    createList(searchInput.value, oneFunction());
     hideList();
 })
       
@@ -334,41 +340,43 @@ function oneFunction(){
     if (document.getElementById('hops').value === "") {
         hopsInput = ""
     }else{
-        hopsInput = "?hops=" + document.getElementById('hops').value + "&"
+        hopsInput = "hops=" + document.getElementById('hops').value + "&"
     }
 
     
     if (document.getElementById('malt').value === "") {
         maltInput = ""
     }else{
-        maltInput = "?malt=" + document.getElementById('malt').value + "&"
+        maltInput = "malt=" + document.getElementById('malt').value + "&"
     }
     
     if (document.getElementById('bbt').value === "") {
         brewedBtInput = ""
     }else{
-        brewedBtInput = "?brewed_before=" + document.getElementById('bbt').value + "&"
+        brewedBtInput = "brewed_before=" + document.getElementById('bbt').value + "&"
     }
         
     if (document.getElementById('bat').value === "") {
         brewedAtInput = ""
     }else{
-        brewedAtInput = "?brewed_after=" + document.getElementById('bat').value + "&"
+        brewedAtInput = "brewed_after=" + document.getElementById('bat').value + "&"
     }
     
     if (document.getElementById('abvGt').value === "") {
         AbvGtInput = ""
     }else{
-        AbvGtInput = "?abv_gt=" + document.getElementById('abvGt').value + "&"
+        AbvGtInput = "abv_gt=" + document.getElementById('abvGt').value + "&"
     }
     
     if (document.getElementById('abvLt').value === "") {
         AbvLtInput = ""
     }else{
-        AbvLtInput = "?abv_lt=" + document.getElementById('abvLt').value + "&"
+        AbvLtInput = "abv_lt=" + document.getElementById('abvLt').value + "&"
     }
 
     urlToFetch = hopsInput + maltInput + brewedBtInput + brewedAtInput + AbvGtInput + AbvLtInput
+    console.log(urlToFetch)
+    return urlToFetch
         
     // console.log(hopsInput) 
     // console.log(maltInput) 
@@ -377,7 +385,7 @@ function oneFunction(){
     // console.log(AbvGtInput) 
     // console.log(AbvLtInput) 
     // console.log(urlToFetch) 
-    advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
+    // advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
     
 }
 
@@ -388,8 +396,8 @@ function oneFunction(){
 
 
 async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abvGreater, abvLesser){
-    const request = await fetch (`https://api.punkapi.com/v2/beers${hops}${malt}${brewedBeforeThan}${brewedAfterThan}${abvGreater}${abvLesser}`)
-    
+    const request = await fetch (`https://api.punkapi.com/v2/beers?${hops}${malt}${brewedBeforeThan}${brewedAfterThan}${abvGreater}${abvLesser}`)
+    console.log(request)
     const answer = await request.json()
     console.log(answer)
 }
