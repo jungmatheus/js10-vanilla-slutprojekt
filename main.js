@@ -282,7 +282,6 @@ searchInput.addEventListener("keyup", function () {
 /* --------------------------------- advanced search ---------------------------- */
 
 
-<<<<<<< Updated upstream
 // let advancedSearch = async function(desiredFilter) {
 //   let root =  "https://api.punkapi.com/v2/beers?";
 
@@ -302,8 +301,6 @@ searchInput.addEventListener("keyup", function () {
 
 
 //HIDE/SHOW FILTERS
-=======
->>>>>>> Stashed changes
 
 let filterButton = document.querySelector(".filter-button");
 let clicked = false;
