@@ -330,11 +330,13 @@ let clicked = false;
 
  filterButton.addEventListener("click", function() {
     const filters = document.querySelectorAll(".filter-wrapper div");
-    const applyButton = document.querySelector(".filter-wrapper button");
+    const applyButton = document.getElementById("apply-button");
+    const clearButton = document.getElementById("clear-button");
 
 
     if(clicked == false) {
         applyButton.classList.remove("inactive");
+        clearButton.classList.remove("inactive");
         for(let i = 0; i < filters.length; i++) {
             filters[i].classList.remove("inactive");
            clicked = true;
@@ -342,6 +344,7 @@ let clicked = false;
     }
     else {
         applyButton.classList.add("inactive");
+        clearButton.classList.add("inactive");
         for(let i = 0; i < filters.length; i++) {
             filters[i].classList.add("inactive");
            clicked = false;
@@ -351,6 +354,17 @@ let clicked = false;
     applyButton.addEventListener("click", function() {
         oneFunction();
         createList(searchInput.value, oneFunction());
+    })
+
+    clearButton.addEventListener("click", function() {
+        let filterInputValues = document.querySelectorAll(".filter-wrapper input");
+        
+        for(let i = 0; i < filterInputValues.length; i++) {
+            filterInputValues[i].value = null;
+        }
+
+        hideList();
+    
     })
    
 })
