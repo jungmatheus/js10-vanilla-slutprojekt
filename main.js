@@ -205,7 +205,7 @@ let fetchBySearch = async function (userInput, advancedSr) {
     if(advancedSr == undefined) {
         advancedSr = "";
     }
-    let root = "https://api.punkapi.com/v2/beers?beer_name=" + userInput + "&" + advancedSr;
+    let root = "https://api.punkapi.com/v2/beers?beer_name=" + userInput + "&" + advancedSr + "&per_page=4";
     console.log(root)
 
     let request = await fetch(root)
@@ -223,24 +223,30 @@ let createList = async function (userInput, advancedSr) {
     }
     let fetchResult = await fetchBySearch(userInput, advancedSr);
 
-    let searchMain = document.querySelector(".search-main");
+    let searchMain = document.querySelector(".form-1-container");
     let ul = document.createElement("ul");
     searchMain.appendChild(ul);
     ul.classList.add("ul-form");
 
-    
-    if(userInput.length > 2) {
+
+    if(userInput.length > 0) {
+        document.querySelector(".form-2-container").classList.remove("hidden")
         for (let i = 0; i < fetchResult.length; i++) {
             let li = document.createElement("li");
-            ul.appendChild(li);
+            ul.appendChild(li)
+
             list = document.querySelectorAll(".ul-form li");
             list[i].classList.add("li-form");
     
             list[i].innerHTML = fetchResult[i].name;
             
         }
-
     }
+
+    if (userInput.length == 0) {
+        document.querySelector(".form-2-container").classList.add("hidden")
+    }
+
       
     //makes the list clickable
      for (let i = 0; i < list.length; i++) {
@@ -251,6 +257,8 @@ let createList = async function (userInput, advancedSr) {
      }
 }
 
+
+
 let hideList = function() {
     if(searchInput.value.length == 0) {
         
@@ -258,11 +266,11 @@ let hideList = function() {
             list[i].remove();
         }
     }
-     else{
-         for(let i = 0; i < list.length; i++) {
-             list[i].style.display = "";
-         }
-     }
+    //  else{
+    //      for(let i = 0; i < list.length; i++) {
+    //          list[i].style.display = "";
+    //      }
+    //  }
 }
 
 searchInput.addEventListener("keyup", function () {
