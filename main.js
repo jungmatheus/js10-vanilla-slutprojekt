@@ -292,12 +292,10 @@ searchInput.addEventListener("keyup", function () {
 
 
 
-
+//HIDE/SHOW FILTERS
 
 let filterButton = document.querySelector(".filter-button");
 let clicked = false;
-
-
 
  filterButton.addEventListener("click", function() {
     const filters = document.querySelectorAll(".filter-wrapper div");
