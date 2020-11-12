@@ -211,42 +211,17 @@ let fetchBySearch = async function (userInput, advancedSr, page) {
     let request = await fetch(root)
     let result = await request.json();
 
-
     return result;
 
-}
-
-let fetchByFilter = async function(userInput, advancedSr, page) {
-    if(advancedSr == undefined) {
-        advancedSr = "";
-    }
-    if(userInput == undefined) {
-        advancedSr = "";
-    }
-    let root = "https://api.punkapi.com/v2/beers?" + userInput + "&" + advancedSr + "&per_page=10";
-
-    let request = await fetch(root)
-    let result = await request.json();
-    console.log(request);
-    return result;
 }
 
 
 
 let createList = async function (userInput, advancedSr) {
-
-
-    let fetchResult;
-    
-    if(userInput == 0 && filterApplied == true) {
-        console.log("works")
-        fetchResult = await fetchByFilter(userInput, advancedSr);
+    if(advancedSr == undefined) {
+        advancedSr = "";
     }
-    else {
-        fetchResult = await fetchBySearch(userInput, advancedSr);
-    }
-
-    
+    let fetchResult = await fetchBySearch(userInput, advancedSr, pageCounter);
 
     let searchMain = document.querySelector(".form-1-container");
     let ul = document.createElement("ul");
@@ -267,23 +242,6 @@ let createList = async function (userInput, advancedSr) {
             
         }
     }
-
-    if(filterApplied == true) {
-        document.querySelector(".form-2-container").classList.remove("hidden")
-        for (let i = 0; i < fetchResult.length; i++) {
-            let li = document.createElement("li");
-            ul.appendChild(li)
-
-            list = document.querySelectorAll(".ul-form li");
-            list[i].classList.add("li-form");
-    
-            list[i].innerHTML = fetchResult[i].name;
-            
-        }
-    }
-
-
-
 
     if (userInput.length == 0) {
         document.querySelector(".form-2-container").classList.add("hidden")
@@ -370,14 +328,12 @@ let AbvLtInput = ""
 
 let urlToFetch = ""
 
-let filterApplied = false;
 
 function oneFunction(){
 
     if (document.getElementById('hops').value === "") {
         hopsInput = ""
     }else{
-        filterApplied = true;
         hopsInput = "hops=" + document.getElementById('hops').value + "&"
     }
 
@@ -385,35 +341,30 @@ function oneFunction(){
     if (document.getElementById('malt').value === "") {
         maltInput = ""
     }else{
-        filterApplied = true;
         maltInput = "malt=" + document.getElementById('malt').value + "&"
     }
     
     if (document.getElementById('bbt').value === "") {
         brewedBtInput = ""
     }else{
-        filterApplied = true;
         brewedBtInput = "brewed_before=" + document.getElementById('bbt').value + "&"
     }
         
     if (document.getElementById('bat').value === "") {
         brewedAtInput = ""
     }else{
-        filterApplied = true;
         brewedAtInput = "brewed_after=" + document.getElementById('bat').value + "&"
     }
     
     if (document.getElementById('abvGt').value === "") {
         AbvGtInput = ""
     }else{
-        filterApplied = true;
         AbvGtInput = "abv_gt=" + document.getElementById('abvGt').value + "&"
     }
     
     if (document.getElementById('abvLt').value === "") {
         AbvLtInput = ""
     }else{
-        filterApplied = true;
         AbvLtInput = "abv_lt=" + document.getElementById('abvLt').value + "&"
     }
 
@@ -421,7 +372,15 @@ function oneFunction(){
     console.log(urlToFetch)
     return urlToFetch
         
- 
+    // console.log(hopsInput) 
+    // console.log(maltInput) 
+    // console.log(brewedBtInput) 
+    // console.log(brewedAtInput) 
+    // console.log(AbvGtInput) 
+    // console.log(AbvLtInput) 
+    // console.log(urlToFetch) 
+    // advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
+    
 }
 
 async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abvGreater, abvLesser, page){
