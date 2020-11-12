@@ -221,7 +221,7 @@ let createList = async function (userInput, advancedSr) {
     if(advancedSr == undefined) {
         advancedSr = "";
     }
-    let fetchResult = await fetchBySearch(userInput, advancedSr, pageCounter);
+    let fetchResult = await fetchBySearch(userInput, advancedSr);
 
     let searchMain = document.querySelector(".form-1-container");
     let ul = document.createElement("ul");
@@ -365,15 +365,7 @@ function oneFunction(){
     console.log(urlToFetch)
     return urlToFetch
         
-    // console.log(hopsInput) 
-    // console.log(maltInput) 
-    // console.log(brewedBtInput) 
-    // console.log(brewedAtInput) 
-    // console.log(AbvGtInput) 
-    // console.log(AbvLtInput) 
-    // console.log(urlToFetch) 
-    // advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
-    
+ 
 }
 
 async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abvGreater, abvLesser, page){
