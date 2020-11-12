@@ -222,15 +222,18 @@ let createList = async function (userInput) {
     searchMain.appendChild(ul);
     ul.classList.add("ul-form");
 
-    ///creates 3 li elements
-    for (let i = 0; i < fetchResult.length; i++) {
-        let li = document.createElement("li");
-        ul.appendChild(li);
-        list = document.querySelectorAll(".ul-form li");
-        list[i].classList.add("li-form");
+    
+    if(userInput.length > 2) {
+        for (let i = 0; i < fetchResult.length; i++) {
+            let li = document.createElement("li");
+            ul.appendChild(li);
+            list = document.querySelectorAll(".ul-form li");
+            list[i].classList.add("li-form");
+    
+            list[i].innerHTML = fetchResult[i].name;
+            
+        }
 
-        list[i].innerHTML = fetchResult[i].name;
-        
     }
       
     //makes the list clickable
