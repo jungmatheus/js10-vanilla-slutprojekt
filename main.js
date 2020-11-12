@@ -347,8 +347,15 @@ let clicked = false;
            clicked = false;
         }
     }
+
+    applyButton.addEventListener("click", function() {
+        oneFunction();
+        createList(searchInput.value, oneFunction());
+    })
    
 })
+
+
 
 
   
