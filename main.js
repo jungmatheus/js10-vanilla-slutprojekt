@@ -296,6 +296,7 @@ let AbvLtInput = ""
 
 let urlToFetch = ""
 
+
 function oneFunction(){
 
     if (document.getElementById('hops').value === "") {
@@ -343,7 +344,6 @@ function oneFunction(){
     console.log(brewedAtInput) 
     console.log(AbvGtInput) 
     console.log(AbvLtInput) 
-    
     console.log(urlToFetch) 
     advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
     
