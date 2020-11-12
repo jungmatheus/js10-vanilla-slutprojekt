@@ -265,33 +265,21 @@ searchInput.addEventListener("keyup", function () {
 /* --------------------------------- advanced search ---------------------------- */
 
 
+// let advancedSearch = async function(desiredFilter) {
+//   let root =  "https://api.punkapi.com/v2/beers?";
 
-////filter button
+//   let request = await fetch(root + desiredFilter);
+//   let result = await request.json();
+//   return result;
+ 
+//  }
 
-let filterButton = document.querySelector(".filter-button");
+//  let malt = document.querySelector(".malt");
+//  let searchB
 
-let clicked = false;
-
-filterButton.addEventListener("click", function() {
-    const filters = document.querySelectorAll(".filter-wrapper div");
-    const applyButton = document.querySelector(".filter-wrapper button");
-    
-    if(clicked == false) {
-        applyButton.classList.remove("inactive");
-        for(let i = 0; i < filters.length; i++) {
-            filters[i].classList.remove("inactive");
-           clicked = true;
-        }
-    }
-    else {
-        applyButton.classList.add("inactive");
-        for(let i = 0; i < filters.length; i++) {
-            filters[i].classList.add("inactive");
-           clicked = false;
-        }
-    }
-   
-})
+//  malt.addEventListener("click", function() {
+//     console.log(advancedSearch("malt=Caramalt|Amber"))
+//  })
 
 
   
@@ -348,13 +336,13 @@ function oneFunction(){
 
     urlToFetch = hopsInput + maltInput + brewedBtInput + brewedAtInput + AbvGtInput + AbvLtInput
         
-    console.log(hopsInput) 
-    console.log(maltInput) 
-    console.log(brewedBtInput) 
-    console.log(brewedAtInput) 
-    console.log(AbvGtInput) 
-    console.log(AbvLtInput) 
-    console.log(urlToFetch) 
+    // console.log(hopsInput) 
+    // console.log(maltInput) 
+    // console.log(brewedBtInput) 
+    // console.log(brewedAtInput) 
+    // console.log(AbvGtInput) 
+    // console.log(AbvLtInput) 
+    // console.log(urlToFetch) 
     advancedSearch(hopsInput, maltInput, brewedBtInput, brewedAtInput, AbvGtInput, AbvLtInput)
     
 }
@@ -371,6 +359,8 @@ async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abv
     const answer = await request.json()
     console.log(answer)
 }
+
+// https://api.punkapi.com/v2/beers?brewed_before=11-2012&abv_gt=6
 
 
 
