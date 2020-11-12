@@ -282,6 +282,37 @@ searchInput.addEventListener("keyup", function () {
 //  })
 
 
+
+
+
+let filterButton = document.querySelector(".filter-button");
+let clicked = false;
+
+
+
+ filterButton.addEventListener("click", function() {
+    const filters = document.querySelectorAll(".filter-wrapper div");
+    const applyButton = document.querySelector(".filter-wrapper button");
+
+
+    if(clicked == false) {
+        applyButton.classList.remove("inactive");
+        for(let i = 0; i < filters.length; i++) {
+            filters[i].classList.remove("inactive");
+           clicked = true;
+        }
+    }
+    else {
+        applyButton.classList.add("inactive");
+        for(let i = 0; i < filters.length; i++) {
+            filters[i].classList.add("inactive");
+           clicked = false;
+        }
+    }
+   
+})
+
+
   
 //VARIABLER AVANCERAD SÖKNING-------------------    
 
