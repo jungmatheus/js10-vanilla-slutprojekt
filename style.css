@@ -236,8 +236,8 @@ a:hover{
 }
 
 ::placeholder {
-    color:#048980;
-    opacity:1; 
+    color:#9da39e;
+    opacity:0.5; 
 }
 
 .fa-search {
@@ -253,8 +253,8 @@ ul {
 .li-form {
     width:500px;
     height:40px;
-    background-color:rgba(0, 0, 0, 0.803);
-    color:#048980;
+    background-color: rgba(0, 0, 0, 0.803);
+    color: #048980;
     margin-right:2.2vh;
 }
 
@@ -272,6 +272,15 @@ ul {
     margin-left: 20px;
 }
 
+
+.filter-wrapper > div.inactive {
+  display:none;
+}
+
+.filter-wrapper > button.inactive {
+    display:none;
+}
+
 .filters {
     margin:10px 15px;
     width:100px;
@@ -280,9 +289,60 @@ ul {
     margin-top:40px;
 }
 
-.malt {
+
+.filter-button {
+    position:relative;
+    top:80px;
+    width:80px;
+    height:30px;
+    text-align:center;
+    padding-top:5px;
+    background-color:rgba(0, 0, 0, 0.803);
+    color:#048980;
+    display:flex;
+    justify-content:space-evenly;
+    border-radius:5%;
+}
+
+.filter-button:hover {
+    cursor:pointer;
+}
+
+
+.filter-wrapper div {
+    margin-top:30px;
     
 }
+
+.filter-wrapper p {
+    font-family:'Raleway', sans-serif;
+    color:#048980;
+}
+
+.filter-wrapper input {
+    height:30px;
+    background-color:rgba(0, 0, 0, 0.803);
+    color:#048980;
+}
+
+.filter-wrapper button {
+
+    margin-top:30px;
+    width:80px;
+    height:30px;
+    text-align:center;
+    padding-top:5px;
+    background-color:rgba(0, 0, 0, 0.803);
+    color:#048980;
+    display:flex;
+    justify-content:space-evenly;
+    border-radius:5%;
+}
+
+.filter-wrapper button:hover {
+    cursor:pointer;
+}
+
 
 
 /* ------------------------------------------------------- SECTION SEARCH PAGE --------------------------------------------------*/
