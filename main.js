@@ -294,8 +294,6 @@ filterButton.addEventListener("click", function() {
 })
 
 
-
-
   
 //VARIABLER AVANCERAD SÖKNING-------------------    
 
