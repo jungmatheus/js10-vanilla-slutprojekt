@@ -514,7 +514,11 @@ ul {
     .regular-search {
  
         width: 300px;
-
     }
+
+    .form-2-container p {
+        width: 300px;
+    }
+
 
 }
