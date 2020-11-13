@@ -202,6 +202,15 @@ let searchInput = document.querySelector(".regular-search");
 let list;
 
 
+let normalFetch = async function(userInput) {
+    let root = "https://api.punkapi.com/v2/beers?beer_name=" + userInput;
+    let request = await fetch(root)
+    let result = await request.json();
+
+    return result;
+}
+
+
 let fetchBySearch = async function (userInput, advancedSr, page) {
     if(advancedSr == undefined) {
         advancedSr = "";
@@ -224,7 +233,7 @@ let fetchByFilter = async function(userInput, advancedSr) {
     if(userInput == undefined) {
         advancedSr = "";
     }
-    let root = "https://api.punkapi.com/v2/beers?" + userInput + "&" + advancedSr + "&per_page=10";
+    let root = "https://api.punkapi.com/v2/beers" + userInput + "&" + advancedSr + "&per_page=10";
 
     let request = await fetch(root)
     let result = await request.json();
@@ -292,23 +301,21 @@ let createList = async function (userInput, advancedSr) {
         }
     }
 
-
-
-
     if (userInput.length == 0) {
         document.querySelector(".form-2-container").classList.add("hidden")
     }
 
       
     //makes the list clickable
-    if(userInput > 2) {
+    if(searchInput.value.length > 2) {
         for (let i = 0; i < list.length; i++) {
             list[i].addEventListener("click", function () {
-                print(fetchBySearch(list[i].innerHTML));
+                print(normalFetch(list[i].innerHTML));
                 seeMore();
             })
         }
     }
+    
     
 }
 
@@ -329,15 +336,11 @@ let hideList = function() {
 }
 
 searchInput.addEventListener("keyup", function () {
+
     createList(searchInput.value, oneFunction());
     hideList();
 
  
-
-    
-
-
-    
  
 })
       
