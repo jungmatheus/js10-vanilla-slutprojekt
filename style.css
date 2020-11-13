@@ -142,6 +142,11 @@ a:hover{
     font-size: 16px;
 }
 
+button{
+    outline: none;
+    box-shadow: none;   
+}
+
 .home-random-beer-button button:hover{
     cursor: pointer;
 }
