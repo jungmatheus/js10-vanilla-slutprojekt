@@ -59,7 +59,7 @@ function fillTheInfo(source) {
         document.querySelector(".info-beer-card-img").style = "max-height: 400px"
     }
     if (source[0].image_url === null) {
-        console.log("we got a null!");
+        // console.log("we got a null!");
 
         //Landing page beer card
         
@@ -253,7 +253,10 @@ let createList = async function (userInput, advancedSr) {
     let fetchResult;
     
     if(userInput == 0 && filterApplied == true) {
-        console.log("works")
+        // console.log("works")
+        document.querySelector(".current-page").innerHTML = pageCounter
+        console.log(pageCounter)
+
         fetchResult = await fetchByFilter(userInput, advancedSr);
         if(fetchResult.length == 0) {
             pageLimit = true;
@@ -366,12 +369,14 @@ let filterButton = document.querySelector(".filter-button");
 let clicked = false;
 
  filterButton.addEventListener("click", function() {
+    
     const filters = document.querySelectorAll(".filter-wrapper div");
     const applyButton = document.getElementById("apply-button");
     const clearButton = document.getElementById("clear-button");
 
 
     if(clicked == false) {
+    
         applyButton.classList.remove("inactive");
         clearButton.classList.remove("inactive");
         for(let i = 0; i < filters.length; i++) {
@@ -380,6 +385,7 @@ let clicked = false;
         }
     }
     else {
+    
         applyButton.classList.add("inactive");
         clearButton.classList.add("inactive");
         for(let i = 0; i < filters.length; i++) {
@@ -389,11 +395,16 @@ let clicked = false;
     }
 
     applyButton.addEventListener("click", function() {
+        
+        pageCounter = 1
+        console.log(pageCounter)
         oneFunction();
         createList(searchInput.value, oneFunction());
     })
 
     clearButton.addEventListener("click", function() {
+        // pageCounter = 1
+
         let filterInputValues = document.querySelectorAll(".filter-wrapper input");
         filterApplied = false;
         document.querySelector(".form-2-container").classList.add("hidden")
@@ -471,7 +482,7 @@ function oneFunction(){
     }
 
     urlToFetch = hopsInput + maltInput + brewedBtInput + brewedAtInput + AbvGtInput + AbvLtInput
-    console.log(urlToFetch)
+    // console.log(urlToFetch)
     return urlToFetch
         
  
