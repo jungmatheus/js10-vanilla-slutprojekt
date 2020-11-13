@@ -228,11 +228,13 @@ let fetchByFilter = async function(userInput, advancedSr) {
 
     let request = await fetch(root)
     let result = await request.json();
-    console.log(request);
+
+    
     return result;
 }
 
 
+let pageLimit = false;
 
 let createList = async function (userInput, advancedSr) {
 
@@ -242,9 +244,16 @@ let createList = async function (userInput, advancedSr) {
     if(userInput == 0 && filterApplied == true) {
         console.log("works")
         fetchResult = await fetchByFilter(userInput, advancedSr);
+
     }
     else {
         fetchResult = await fetchBySearch(userInput, advancedSr);
+        if(fetchResult.length == 0) {
+            pageLimit = true;
+        }
+        else{
+            pageLimit = false;
+        }
     }
 
     
@@ -468,22 +477,37 @@ async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abv
     const nextButton = document.getElementById("next");
 
     nextButton.addEventListener("click", function() {
-        hideList();
-        pageCounter++
-        createList(searchInput.value, oneFunction(), pageCounter)
-        document.querySelector(".current-page").innerHTML = pageCounter
+        if(pageLimit == false) {
+            pageCounter++
+            createList(searchInput.value, oneFunction(), pageCounter)
+            document.querySelector(".current-page").innerHTML = pageCounter;
+            for(let i = 0; i < list.length; i++) {
+                list[i].remove();
+            }
+        }
+        else {
+            for(let i = 0; i < list.length; i++) {
+                list[i].remove();
+            }
+        }
+       
     })
    
-
-
 
     const previousButton = document.getElementById("previous");
 
     previousButton.addEventListener("click", function() {
-        hideList()
-        pageCounter--
-        createList(searchInput.value, oneFunction(), pageCounter);
-        document.querySelector(".current-page").innerHTML = pageCounter
+        
+        if(pageCounter != 1) {
+            for(let i = 0; i < list.length; i++) {
+                list[i].remove();
+            }
+            hideList()
+            pageCounter--
+            createList(searchInput.value, oneFunction(), pageCounter);
+            document.querySelector(".current-page").innerHTML = pageCounter
+        }
+      
     })
   
  
