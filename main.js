@@ -466,7 +466,8 @@ async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abv
 
     nextButton.addEventListener("click", function() {
         hideList();
-        pageCounter++
+         
+            pageCounter++
         createList(searchInput.value, oneFunction(), pageCounter)
         document.querySelector(".current-page").innerHTML = pageCounter
     })
@@ -478,7 +479,10 @@ async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abv
 
     previousButton.addEventListener("click", function() {
         hideList()
-        pageCounter--
+        
+        if (pageCounter > 1) {
+            pageCounter--
+        }
         createList(searchInput.value, oneFunction(), pageCounter);
         document.querySelector(".current-page").innerHTML = pageCounter
     })
