@@ -531,7 +531,7 @@ ul {
         padding: 0 10px;
         display: flex;
         align-items: center;
-        font-size: 13px;
+        font-size: 11px;
     }
 
 
@@ -541,6 +541,10 @@ ul {
 
     .regular-search {
  
+        width: 300px;
+    }
+
+    .form-2-container{
         width: 300px;
     }
 
