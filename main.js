@@ -245,6 +245,7 @@ let fetchByFilter = async function(userInput, advancedSr) {
 
 
 let pageLimit = false;
+const pageContainer = document.querySelector(".form-2-container")
 
 let createList = async function (userInput, advancedSr) {
 
@@ -254,6 +255,12 @@ let createList = async function (userInput, advancedSr) {
     if(userInput == 0 && filterApplied == true) {
         console.log("works")
         fetchResult = await fetchByFilter(userInput, advancedSr);
+        if(fetchResult.length == 0) {
+            pageLimit = true;
+        }
+        else{
+            pageLimit = false;
+        }
     
     }
     else {
@@ -272,7 +279,7 @@ let createList = async function (userInput, advancedSr) {
     let ul = document.createElement("ul");
     searchMain.appendChild(ul);
     ul.classList.add("ul-form");
-    const pageContainer = document.querySelector(".form-2-container")
+    
 
 
     if(userInput.length > 2) {
@@ -305,7 +312,7 @@ let createList = async function (userInput, advancedSr) {
         }
     }
 
-    if (userInput.length == 0 && filterApplied == false) {
+    if (searchInput.value.length == 0 && filterApplied == false) {
         document.querySelector(".form-2-container").classList.add("hidden")
     }
 
@@ -388,6 +395,8 @@ let clicked = false;
 
     clearButton.addEventListener("click", function() {
         let filterInputValues = document.querySelectorAll(".filter-wrapper input");
+        filterApplied = false;
+        document.querySelector(".form-2-container").classList.add("hidden")
         
         for(let i = 0; i < filterInputValues.length; i++) {
             filterInputValues[i].value = null;
