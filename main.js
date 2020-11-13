@@ -206,17 +206,18 @@ let fetchBySearch = async function (userInput, advancedSr, page) {
     if(advancedSr == undefined) {
         advancedSr = "";
     }
-    let root = "https://api.punkapi.com/v2/beers?beer_name=" + userInput + "&" + advancedSr + "per_page=10";
+    let root = "https://api.punkapi.com/v2/beers?beer_name=" + userInput + "&" + advancedSr + "per_page=10"  + "&page=" + pageCounter;
 
     let request = await fetch(root)
     let result = await request.json();
+    console.log(request);
 
 
     return result;
 
 }
 
-let fetchByFilter = async function(userInput, advancedSr, page) {
+let fetchByFilter = async function(userInput, advancedSr) {
     if(advancedSr == undefined) {
         advancedSr = "";
     }
@@ -254,7 +255,7 @@ let createList = async function (userInput, advancedSr) {
     ul.classList.add("ul-form");
 
 
-    if(userInput.length > 0) {
+    if(userInput.length > 2) {
         document.querySelector(".form-2-container").classList.remove("hidden")
         for (let i = 0; i < fetchResult.length; i++) {
             let li = document.createElement("li");
@@ -318,6 +319,14 @@ let hideList = function() {
 searchInput.addEventListener("keyup", function () {
     createList(searchInput.value, oneFunction());
     hideList();
+
+ 
+
+    
+
+
+    
+ 
 })
       
         
@@ -449,31 +458,32 @@ async function advancedSearch(hops, malt, brewedBeforeThan, brewedAfterThan, abv
 
 //-------------------------------------------PREVIOUS OCH NEXT BUTTONS--------------------------------------
 
-function nextPage() {
-    if (pageCounter != "undefined") {
-        pageCounter++
-    }else{  //När man kommer till sista sidan kommer den att returnera dig till första
-        pageCounter = 1 
-    }
-    console.log(pageCounter)
 
-    // getStarWarsData(pageCounter)
-    // print()
-    document.querySelector(".current-page").innerHTML = pageCounter
- }
+
+
+
+    const nextButton = document.getElementById("next");
+
+    nextButton.addEventListener("click", function() {
+        hideList();
+        pageCounter++
+        createList(searchInput.value, oneFunction(), pageCounter)
+        document.querySelector(".current-page").innerHTML = pageCounter
+    })
+   
+
+
+
+    const previousButton = document.getElementById("previous");
+
+    previousButton.addEventListener("click", function() {
+        hideList()
+        pageCounter--
+        createList(searchInput.value, oneFunction(), pageCounter);
+        document.querySelector(".current-page").innerHTML = pageCounter
+    })
+  
  
- function previousPage() {
-     if (pageCounter != "undefined") {
-         pageCounter--
-     }else{  //När man kommer till sista sidan kommer den att returnera dig till första
-         pageCounter = 1 
-     }
-     console.log(pageCounter)
- 
-     // getStarWarsData(pageCounter)
-     // print()
-     document.querySelector(".current-page").innerHTML = pageCounter
-  }
  
 
 
