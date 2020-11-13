@@ -321,7 +321,7 @@ a:hover{
 
 
 ::placeholder {
-    color:#048980;
+    color:#e7f3f2;
     opacity:0.3; 
 }
 
@@ -563,6 +563,16 @@ ul {
 
     .filter-wrapper input {
         width: 140px;
+    }
+
+    .go-back{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-go-back:hover{
+        cursor: pointer;
     }
 
 
