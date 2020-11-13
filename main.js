@@ -292,12 +292,15 @@ let createList = async function (userInput, advancedSr) {
 
       
     //makes the list clickable
-     for (let i = 0; i < list.length; i++) {
-         list[i].addEventListener("click", function () {
-             print(fetchBySearch(list[i].innerHTML));
-             seeMore();
-         })
-     }
+    if(userInput > 2) {
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener("click", function () {
+                print(fetchBySearch(list[i].innerHTML));
+                seeMore();
+            })
+        }
+    }
+    
 }
 
 
