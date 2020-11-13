@@ -233,9 +233,10 @@ let fetchByFilter = async function(userInput, advancedSr) {
     if(userInput == undefined) {
         advancedSr = "";
     }
-    let root = "https://api.punkapi.com/v2/beers" + userInput + "&" + advancedSr + "&per_page=10";
+    let root = "https://api.punkapi.com/v2/beers?" + userInput + "&" + advancedSr + "per_page=10" + "&page=" + pageCounter;
 
     let request = await fetch(root)
+    console.log(request)
     let result = await request.json();
 
     
@@ -253,7 +254,7 @@ let createList = async function (userInput, advancedSr) {
     if(userInput == 0 && filterApplied == true) {
         console.log("works")
         fetchResult = await fetchByFilter(userInput, advancedSr);
-
+    
     }
     else {
         fetchResult = await fetchBySearch(userInput, advancedSr);
@@ -271,10 +272,12 @@ let createList = async function (userInput, advancedSr) {
     let ul = document.createElement("ul");
     searchMain.appendChild(ul);
     ul.classList.add("ul-form");
+    const pageContainer = document.querySelector(".form-2-container")
 
 
     if(userInput.length > 2) {
-        document.querySelector(".form-2-container").classList.remove("hidden")
+        console.log("true");
+        pageContainer.classList.remove("hidden")
         for (let i = 0; i < fetchResult.length; i++) {
             let li = document.createElement("li");
             ul.appendChild(li)
@@ -288,7 +291,8 @@ let createList = async function (userInput, advancedSr) {
     }
 
     if(filterApplied == true) {
-        document.querySelector(".form-2-container").classList.remove("hidden")
+        console.log("also true")
+        pageContainer.classList.remove("hidden")
         for (let i = 0; i < fetchResult.length; i++) {
             let li = document.createElement("li");
             ul.appendChild(li)
@@ -301,13 +305,13 @@ let createList = async function (userInput, advancedSr) {
         }
     }
 
-    if (userInput.length == 0) {
+    if (userInput.length == 0 && filterApplied == false) {
         document.querySelector(".form-2-container").classList.add("hidden")
     }
 
       
     //makes the list clickable
-    if(searchInput.value.length > 2) {
+    if(searchInput.value.length > 2 || filterApplied == true) {
         for (let i = 0; i < list.length; i++) {
             list[i].addEventListener("click", function () {
                 print(normalFetch(list[i].innerHTML));
@@ -315,6 +319,8 @@ let createList = async function (userInput, advancedSr) {
             })
         }
     }
+
+  
     
     
 }
